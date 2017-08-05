@@ -1,0 +1,41 @@
+{
+  "name": "hb-markdown",
+  "version": "1.0.0",
+  "description": " Markdown parser built for Homebrewery",
+  "main": "markdown.js",
+  "scripts": {
+    "test:dev": "ava -w",
+    "dev": "nodemon -w markdown.ne scripts/compile.js",
+    "compile": "node scripts/compile.js",
+    "test": "ava -v",
+    "railroad": "nearley-railroad markdown.ne -o railroad.html && start railroad.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stolksdorf/hb-markdown.git"
+  },
+  "keywords": [
+    "nearley",
+    "homebrewery",
+    "markdown"
+  ],
+  "ava": {
+    "source": [
+      "**/*.{js,ne}",
+      "!tests/*.built.js"
+    ]
+  },
+  "author": "stolksdorf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stolksdorf/hb-markdown/issues"
+  },
+  "homepage": "https://github.com/stolksdorf/hb-markdown#readme",
+  "dependencies": {
+    "nearley": "^2.10.0"
+  },
+  "devDependencies": {
+    "ava": "^0.20.0",
+    "nearley-there": "^1.0.0"
+  }
+}
