@@ -5,7 +5,7 @@ const N = require('nearley-there');
 
 const Markdown = (txt)=>{
 	//console.log(N.parse(fs.readFileSync('./markdown.ne', 'utf8'), txt));
-	var res = N.parse(fs.readFileSync('./markdown.ne', 'utf8'), txt)
+	var res = N.parse(fs.readFileSync('./markdown.list.ne', 'utf8'), txt)
 	if(res instanceof Error) throw res;
 	return res;
 
@@ -13,7 +13,7 @@ const Markdown = (txt)=>{
 
 /** Unordered Lists **/
 
-test.only('basic unordered list', (t)=>{
+test('basic unordered list', (t)=>{
 	const result = Markdown(`* test
 * test2`);
 
@@ -25,7 +25,7 @@ test('spacing unordered list', (t)=>{
 	t.is(result, `<ul><li>test space</li></ul>`);
 });
 
-test.only('split unordered list', (t)=>{
+test('split unordered list', (t)=>{
 	const result = Markdown(`* test
 
 * test2

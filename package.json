@@ -7,7 +7,8 @@
     "test:dev": "ava -w",
     "dev": "nodemon -w markdown.ne scripts/compile.js",
     "compile": "node scripts/compile.js",
-    "test": "ava -v",
+    "test:bd": "nodemon -e js,md brewdown.test.js ",
+    "test": "nodemon -e js,md test.engine.js ",
     "railroad": "nearley-railroad markdown.ne -o railroad.html && start railroad.html"
   },
   "repository": {
