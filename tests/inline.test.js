@@ -25,7 +25,7 @@ test('formatting hanging', (t)=>{
 	t.is(result, `hello *there_`);
 });
 
-test.only('nested', (t)=>{
+test('nested', (t)=>{
 	t.is(Markdown(`why *hello _there_*`),
 		`why <strong>hello <em>there</em><strong>`);
 });

@@ -4,27 +4,27 @@ const brewdown = require('./brewdown.js');
 
 
 const tests = {
-// headers :
-// `# hello ^there*^ yo* ^
+headers :
+`# hello ^there*^ yo* ^
 
-// ## Neat *guy*`,
+## Neat *guy*`,
 
-// list :
-// `- *this* is a list
-// - how [cool](neato) is this`,
+list :
+`- *this* is a list
+- how [cool](neato) is this`,
 
-// codeblock :
-// `\`\`\`
-// - *this* is a list
-// - how cool is this
-// \`\`\``,
+codeblock :
+`\`\`\`
+- *this* is a list
+- how cool is this
+\`\`\``,
 
-// blocks :
-// `{{this,is
+blocks :
+`{{this,is
 
-// ## yo \`javascript\`
+## yo \`javascript\`
 
-// is *a* block}}`,
+is *a* block}}`,
 
 
 image :

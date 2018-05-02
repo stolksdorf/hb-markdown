@@ -14,7 +14,8 @@ const Markdown = (txt)=>{
 /** Unordered Lists **/
 
 test('basic unordered list', (t)=>{
-	const result = Markdown(`* test
+	const result = Markdown(
+`* test
 * test2`);
 
 	t.is(result, `<ul><li>test</li><li>test2</li></ul>`);
@@ -41,7 +42,7 @@ test('split unordered list', (t)=>{
 });
 
 
-test('multiline item', (t)=>{
+test.todo('multiline item', (t)=>{
 	const result = Markdown(`* hey
  there
 * test`);

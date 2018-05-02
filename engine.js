@@ -1,28 +1,23 @@
 const _ = require('lodash');
 
-const debug = true;
+const debug = false;
 const log=(...args)=>(debug?console.log(...args):null);
 
 
 const engine = (rules, input)=>{
-
-	log('------');
-	log('"' + input +'"');
-
 	const match = _.reduce(rules, (bestMatch, rule, id)=>{
+		if(id == 'default') return bestMatch;
 		const info = rule.regex.exec(input);
 		if(!info) return bestMatch;
 
-		log(id, info);
 		if(!bestMatch || bestMatch.index > info.index){
 			info.id = id;
 			return info;
 		}
 		return bestMatch;
 	}, null);
-	log('best', match);
 
-	if(!match) return input;
+	if(!match) return rules.default ? rules.default(input) : input;
 
 	return input.substring(0, match.index)
 		+ rules[match.id].render(...match)

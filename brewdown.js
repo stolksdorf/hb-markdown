@@ -16,50 +16,46 @@ const blockRules = {
 		}
 	},
 	headers : {
-		regex : /(#{1,6}) (.+)\n/,
+		regex : /\n*(#{1,6}) (.+)(\n|$)/,
 		render: (line, marks, text)=>{
 			return `<h${marks.length} id='${snakeCase(text)}'>${inline(text)}</h${marks.length}>`;
 		}
 	},
 	list : {
-		regex : /(\- (.+)\n)+/,
+		regex : /(\- (.+)(\n|$))+/,
 		render : (lines, a, b, c)=>{
-			console.log(lines);
 			const items = lines.split('\n')
 				.map((line)=>`<li>${inline(line.replace('- ', ''))}</li>`)
 				.join('\n')
 			return `<ul>${items}</ul>`
 		}
 	},
-	// paragraphs : {
-	// 	regex: /\n\n([^\n]+)\n/,
-	// 	render : (line, text)=>`<p>${inline(text)}</p>`
-	// },
+	default : (text)=>(text?`<p>${inline(text)}</p>`:'')
 };
 
 const inlineRules = {
 	code : {
-		regex : /`([^`]+)`/g,
+		regex : /`([^`]+)`/,
 		render: (line, text)=>`<code>${text}</code>`
 	},
 	italics : {
-		regex : /_(.+?)_/g,
+		regex : /_(.+?)_/,
 		render: (line, text)=>`<em>${inline(text)}</em>`
 	},
-	bold : {
-		regex : /\*(.+?)\*/g,
-		render: (line, text)=>`<strong>${inline(text)}</strong>`
-	},
+	// bold : {
+	// 	regex : /\*(.+?)\*/,
+	// 	render: (line, text)=>`<strong>${inline(text)}</strong>`
+	// },
 	sup : {
-		regex : /\^(.+?)\^/g,
+		regex : /\^(.+?)\^/,
 		render: (line, text)=>`<sup>${inline(text)}</sup>`
 	},
 	image : {
-		regex : /\!\[([^\[]+)\]\(([^\)]+)\)/g,
+		regex : /\!\[([^\[]+)\]\(([^\)]+)\)/,
 		render: (line, className, link)=>`<img class='${className}' src='${link}' />`
 	},
 	hyperlink : {
-		regex : /\[([^\[]+)\]\(([^\)]+)\)/g,
+		regex : /\[([^\[]+)\]\(([^\)]+)\)/,
 		render: (line, text, link)=>`<a href='${link}'>${inline(text)}</a>`
 	},
 };
